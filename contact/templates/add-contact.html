@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Add New Contact - {% endblock %}
+
+{% block header %}
+<h1>Add New Contact</h1>
+{% endblock %}
+
+{% block content %}
+<form class="mt-4" method="post">
+  {% csrf_token %}
+
+  {% for field in form %}
+  <div class="form-group">
+    {{ field.label_tag }}
+    {{ field }}
+
+    <!-- Render any field errors -->
+    {% if field.errors %}
+    <div class="text-danger fst-italic mb-2" style="margin-top: -10px;">
+      {% for error in field.errors %}
+      {{ error }}
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+  {% endfor %}
+
+  <div class="form-group mt-4">
+    <input type="submit" value="Submit" class="btn btn-primary">
+    <a href="{% url 'home' %}" class="btn btn-secondary p-20">
+      Cancel</a>
+  </div>
+</form>
+{% endblock %}
