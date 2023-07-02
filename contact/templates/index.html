@@ -5,10 +5,10 @@
 {% endblock %}
 
 {% block content %}
-{% if contacts %}
 <div class="mt-4 mb-4">
   <a href="{% url 'add' %}" class="btn btn-primary p-20">&plus; Add</a>
 </div>
+{% if contacts %}
 <hr class="text-secondary border border-secondary border-1">
 <table class="table table-hover">
   <thead>
