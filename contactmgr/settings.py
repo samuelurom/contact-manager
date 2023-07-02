@@ -90,12 +90,11 @@ else:
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.postgresql",
-            "NAME": os.getenv("PG_DATABASE"),
-            "URL": os.getenv("PG_DATABASE_URL"),
-            "USER": os.getenv("PG_USER"),
-            "PASSWORD": os.getenv("PG_PASSWORD"),
-            "HOST": os.getenv("PG_HOST"),
-            "PORT": os.getenv("PG_PORT"),
+            "NAME": os.getenv("POSTGRES_DATABASE"),
+            "URL": os.getenv("POSTGRES_URL"),
+            "USER": os.getenv("POSTGRES_USER"),
+            "PASSWORD": os.getenv("POSTGRES_PASSWORD"),
+            "HOST": os.getenv("POSTGRES_HOST"),
         }
     }
 
@@ -136,7 +135,11 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
-STATIC_ROOT = BASE_DIR / "static/"
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
